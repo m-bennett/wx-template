@@ -1,9 +1,6 @@
 #include <wx/wx.h>
 #include <fmt/core.h>
 
-
-
-
 class MyApp : public wxApp {
 public:
     virtual bool OnInit();
