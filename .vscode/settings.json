@@ -1,0 +1,16 @@
+{
+    // Always use CMake presets for configuration
+    "cmake.useCMakePresets": "always",
+    "cmake.configureOnOpen": true,
+
+    // Disable Microsoft IntelliSense in favor of clangd
+    "C_Cpp.intelliSenseEngine": "disabled",
+
+    // Tell clangd where to find compile_commands.json
+    "clangd.arguments": [
+        "--compile-commands-dir=${workspaceFolder}/build/active"
+    ],
+
+    // Enable semantic highlighting for all editors
+    "editor.semanticHighlighting.enabled": true
+}

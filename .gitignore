@@ -1,0 +1,7 @@
+build/
+vcpkg_installed/
+CMakeCache.txt
+CMakeFiles/
+*.user
+*.log
+.cache/
