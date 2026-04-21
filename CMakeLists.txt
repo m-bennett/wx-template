@@ -45,6 +45,10 @@ add_executable(${PROJECT_NAME}
     src/main.cpp
 )
 
+if(WIN32)
+    set_target_properties(${PROJECT_NAME} PROPERTIES WIN32_EXECUTABLE TRUE)
+endif()
+
 target_compile_options(${PROJECT_NAME} PRIVATE
     $<$<PLATFORM_ID:Linux>:${WX_CXX_FLAGS_LIST}>
 )
