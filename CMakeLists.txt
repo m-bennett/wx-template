@@ -54,21 +54,3 @@ target_link_libraries(${PROJECT_NAME}
         $<$<PLATFORM_ID:Windows>:wx::core wx::base>
         $<$<PLATFORM_ID:Linux>:${WX_LIBS_LIST}>
 )
-
-# -------------------------
-# Create 'build/active' symlink for clangd
-# -------------------------
-if(EXISTS "${CMAKE_BINARY_DIR}")
-    # Remove old symlink if it exists
-    execute_process(
-        COMMAND ${CMAKE_COMMAND} -E remove -f "${CMAKE_SOURCE_DIR}/build/active"
-    )
-    # Create symlink pointing to current binary dir
-    execute_process(
-        COMMAND ${CMAKE_COMMAND} -E create_symlink "${CMAKE_BINARY_DIR}" "${CMAKE_SOURCE_DIR}/build/active"
-        RESULT_VARIABLE symlink_result
-    )
-    if(NOT symlink_result EQUAL 0)
-        message(WARNING "Failed to create build/active symlink for clangd")
-    endif()
-endif()
