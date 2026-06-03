@@ -1,3 +1,0 @@
-CompileFlags:
-  # Use the compilation database from the CMake build folder
-  CompilationDatabase: build
