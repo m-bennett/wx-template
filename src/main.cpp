@@ -12,6 +12,9 @@ bool MyApp::OnInit() {
 
     fmt::print("App starting...\n");
     wxFrame* frame = new wxFrame(nullptr, wxID_ANY, "wxWidgets App");
+
+    frame->SetSize(800, 600);
+    frame->CenterOnScreen();
     frame->Show(true);
 
     return true;
