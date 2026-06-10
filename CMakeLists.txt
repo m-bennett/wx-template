@@ -15,7 +15,7 @@ find_package(fmt CONFIG REQUIRED)
 if(WIN32)
     # Windows: from vcpkg
     find_package(wxWidgets CONFIG REQUIRED)
-    set(WX_LIBS wx::core wx::base)
+    set(WX_LIBS_LIST wx::core wx::base)
 elseif(UNIX)
     # Linux: from system (bypassing vcpkg)
     find_program(WX_CONFIG wx-config REQUIRED)
@@ -38,19 +38,14 @@ elseif(UNIX)
     separate_arguments(WX_LIBS_LIST NATIVE_COMMAND "${WX_LIBS}")
 endif()
 
-# -------------------------
-# executable
-# -------------------------
-add_executable(${PROJECT_NAME} WIN32 src/main.cpp
-)
+add_executable(${PROJECT_NAME} WIN32 src/main.cpp)
 
-target_compile_options(${PROJECT_NAME} PRIVATE
-    $<$<PLATFORM_ID:Linux>:${WX_CXX_FLAGS_LIST}>
-)
+if (NOT WIN32)
+    target_compile_options(${PROJECT_NAME} PRIVATE ${WX_CXX_FLAGS_LIST})
+endif()
 
 target_link_libraries(${PROJECT_NAME}
     PRIVATE
         fmt::fmt
-        $<$<PLATFORM_ID:Windows>:wx::core wx::base>
-        $<$<PLATFORM_ID:Linux>:${WX_LIBS_LIST}>
+        ${WX_LIBS_LIST}
 )
