@@ -5,7 +5,7 @@
       "name": "Debug",
       "generator": "Ninja",
       "toolchainFile": "$env{VCPKG_DIR}/scripts/buildsystems/vcpkg.cmake",
-      "binaryDir": "${sourceDir}/build/debug",
+      "binaryDir": "${sourceDir}/build/${hostSystemName}/debug",
       "cacheVariables": {
         "CMAKE_BUILD_TYPE": "Debug",
         "VCPKG_INSTALLED_DIR": "$env{VCPKG_DIR}/installed"
@@ -15,7 +15,7 @@
       "name": "Release",
       "generator": "Ninja",
       "toolchainFile": "$env{VCPKG_DIR}/scripts/buildsystems/vcpkg.cmake",
-      "binaryDir": "${sourceDir}/build/release",
+      "binaryDir": "${sourceDir}/build/${hostSystemName}/release",
       "cacheVariables": {
         "CMAKE_BUILD_TYPE": "Release",
         "VCPKG_INSTALLED_DIR": "$env{VCPKG_DIR}/installed"
